@@ -9,6 +9,7 @@ import './src/styles/services.css'
 import './src/styles/reviews.css'
 import './src/styles/news.css'
 import './src/styles/contacts.css'
+import './src/styles/prices.css'
 
 import fslightbox from 'fslightbox'
 import { Mask, MaskInput } from 'maska'
@@ -18,6 +19,7 @@ import { initServices } from './src/scripts/services'
 import { initReviewsEmbla } from './src/scripts/reviews'
 import { initNewsEmbla } from './src/scripts/news'
 import { initMobileMenu } from './src/scripts/mobile-menu'
+import { initSlideshow } from './src/scripts/slideshow'
 
 new MaskInput('[data-maska]')
 
@@ -26,3 +28,4 @@ initServices()
 initReviewsEmbla()
 initNewsEmbla()
 initMobileMenu()
+initSlideshow()

@@ -75,26 +75,72 @@ function register_carbon_fields_blocks()
       Field::make('checkbox', 'at_home', 'На главную'),
     ]);
 
-  // Block::make('usage', 'Блок "Внесение"')
-  //   ->add_fields([
-  //     Field::make('separator', 'separator', 'Блок "Внесение"'),
-  //     Field::make('complex', 'options', 'Опции')->add_fields([
-  //       Field::make('image', 'photo', 'Фото')->set_help_text('Изображение размером 300х200'),
-  //       Field::make('textarea', 'name', 'Название')->set_rows(2),
-  //       Field::make('textarea', 'content', 'Значение')->set_rows(2),
-  //     ]),
-  //     Field::make('complex', 'specifications', 'Характеристики')->add_fields([
-  //       Field::make('image', 'photo', 'Фото')->set_help_text('Изображение размером 128х64'),
-  //       Field::make('textarea', 'name', 'Название')->set_rows(2),
-  //       Field::make('textarea', 'content', 'Значение')->set_rows(2),
-  //     ]),
-  //   ])
-  //   ->set_category('layout')
-  //   ->set_mode('edit')
-  //   ->set_icon('shortcode')
-  //   ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-  //     get_template_part('blocks/usage', null, [
-  //       'fields' => $fields,
-  //     ]);
-  //   });
+  Block::make('partials_services', 'Блок "Выбирайте отдых для себя"')
+    ->add_fields([
+      Field::make('separator', 'separator', 'Блок "Выбирайте отдых для себя"'),
+    ])
+    ->set_category('layout')
+    ->set_mode('edit')
+    ->set_icon('shortcode')
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+      get_template_part('partials/services', null, [
+        'fields' => $fields,
+        'attributes' => $attributes,
+        'inner_blocks' => $inner_blocks,
+      ]);
+    });
+
+  Block::make('partials_news', 'Блок "Новости"')
+    ->add_fields([
+      Field::make('separator', 'separator', 'Блок "Новости"'),
+    ])
+    ->set_category('layout')
+    ->set_mode('edit')
+    ->set_icon('shortcode')
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+      get_template_part('partials/news', null, [
+        'fields' => $fields,
+        'attributes' => $attributes,
+        'inner_blocks' => $inner_blocks,
+      ]);
+    });
+
+  Block::make('partials_reviews', 'Блок "Люди говорят о нас"')
+    ->add_fields([
+      Field::make('separator', 'separator', 'Блок "Люди говорят о нас"'),
+    ])
+    ->set_category('layout')
+    ->set_mode('edit')
+    ->set_icon('shortcode')
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+      get_template_part('partials/reviews', null, [
+        'fields' => $fields,
+        'attributes' => $attributes,
+        'inner_blocks' => $inner_blocks,
+      ]);
+    });
+
+  Block::make('partials_prices', 'Блок "Цены"')
+    ->add_fields([
+      Field::make('separator', 'separator', 'Блок "Цены"'),
+      Field::make('complex', 'list', 'Список')->add_fields([
+        Field::make('media_gallery', 'gallery', 'Фотогалерея'),
+        Field::make('textarea', 'title', 'Заголовок')->set_rows(2),
+        Field::make('textarea', 'content', 'Полное описание')->set_rows(2),
+        Field::make('textarea', 'name', 'Название')->set_rows(2),
+        Field::make('textarea', 'introtext', 'Короткое описание')->set_rows(2),
+        Field::make('text', 'price', 'Цена'),
+        Field::make('text', 'unit', 'Ед. измерения'),
+      ]),
+    ])
+    ->set_category('layout')
+    ->set_mode('edit')
+    ->set_icon('shortcode')
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+      get_template_part('partials/prices', null, [
+        'fields' => $fields,
+        'attributes' => $attributes,
+        'inner_blocks' => $inner_blocks,
+      ]);
+    });
 }

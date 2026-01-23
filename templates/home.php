@@ -46,9 +46,20 @@ Template Name: Главная
       </div>
     </section>
 
-    <?php get_template_part('partials/services'); ?>
-    <?php get_template_part('partials/reviews'); ?>
-    <?php get_template_part('partials/news'); ?>
+    <div class="page-layout__body">
+      <div class="container">
+        <div class="page-content">
+          <?php the_content(); ?>
+        </div>
+      </div>
+    </div>
+
+    <?php // get_template_part('partials/services'); 
+    ?>
+    <?php // get_template_part('partials/reviews'); 
+    ?>
+    <?php // get_template_part('partials/news'); 
+    ?>
 
     <?php get_template_part('partials/footer'); ?>
   </div>

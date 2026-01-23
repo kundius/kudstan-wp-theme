@@ -5,8 +5,8 @@
   --opened-width: calc(100% - (var(--closed-width) * var(--count)) - (var(--gap) * var(--count)));
 
   position: relative;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  margin-top: 56px;
+  margin-bottom: 96px;
 
   @media (--max-3xl) {
     --closed-width: 90px;
@@ -22,8 +22,8 @@
   }
 
   @media (--max-md) {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 }
 
