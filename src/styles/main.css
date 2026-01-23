@@ -1,0 +1,260 @@
+:root {
+  --container-width: 100%;
+  --container-padding: 12px;
+  --container-content: calc(var(--container-width) - (var(--container-padding) * 2));
+
+  @media (--min-md) {
+    --container-width: 768px;
+    --container-padding: 16px;
+  }
+
+  @media (--min-lg) {
+    --container-width: 1024px;
+    --container-padding: 16px;
+  }
+
+  @media (--min-xl) {
+    --container-width: 1280px;
+    --container-padding: 24px;
+  }
+
+  @media (--min-2xl) {
+    --container-width: 1536px;
+    --container-padding: 36px;
+  }
+
+  @media (--min-3xl) {
+    --container-width: 1612px;
+    --container-padding: 36px;
+  }
+
+  /* @media (--max-3xl) {
+    --container-width: 1540px;
+    --container-padding: 96px;
+  }
+
+  @media (--max-2xl) {
+    --container-width: 1408px;
+    --container-padding: 64px;
+  }
+
+  @media (--max-xl) {
+    --container-width: 1216px;
+    --container-padding: 32px;
+  }
+
+  @media (--max-lg) {
+    --container-width: 768px;
+    --container-padding: 16px;
+  }
+
+  @media (--max-md) {
+    --container-width: 100%;
+    --container-padding: 16px;
+  } */
+}
+
+@media screen and (max-width: 600px) {
+  #wpadminbar {
+    position: fixed;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  line-height: 1.2;
+  font-size: 16px;
+  background: #fff;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 48px 0;
+  list-style: none;
+
+  @media (--max-md) {
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+}
+
+.breadcrumbs__link {
+  color: #bfbfbf;
+  text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+  color: #6e6e6e;
+}
+
+.breadcrumbs__text {
+  color: #6e6e6e;
+}
+
+.breadcrumbs__item {
+  margin-right: 1.5em;
+}
+
+.breadcrumbs__item+.breadcrumbs__item {
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.breadcrumbs__item+.breadcrumbs__item::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 1.2em;
+  background: #6e6e6e;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.page-title {
+  margin: 48px 0;
+  font-size: 48px;
+  line-height: 1.25;
+  color: #000000;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 50;
+
+  @media (--max-md) {
+    font-size: 36px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+.page-layout__body {
+  flex-grow: 1;
+}
+
+.page-content {}
+
+.input-field {
+  position: relative;
+}
+
+.input-field__label {
+  font-size: 12px;
+  line-height: 1;
+  color: #949494;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  pointer-events: none;
+}
+
+.input-field__input {
+  padding: 20px 12px 0;
+  font-size: 20px;
+  color: #000;
+  line-height: 1;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  height: 52px;
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.input-field__textarea {
+  padding: 24px 12px 8px;
+  font-size: 20px;
+  color: #000;
+  line-height: 1;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  max-width: 100%;
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.container {
+  max-width: 100%;
+  width: var(--container-width);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.more-button {
+  border-radius: 26px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  text-decoration: none;
+  height: 52px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  max-width: 100%;
+}
+
+.more-button:hover {
+  background: #e5e5e5;
+}
+
+.more-button__text {
+  white-space: nowrap;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.more-button__icon {
+  font-size: 16px;
+  display: flex;
+}
+
+.embla-nav-button {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #828283;
+  background: #e8e8e8;
+  border: none;
+
+  @media (--max-md) {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+}
+
+.embla-nav-button:hover {
+  background: #bfbfc0;
+  color: #1c1c1e;
+}
+
+.embla-nav-button:disabled {
+  display: none;
+}
