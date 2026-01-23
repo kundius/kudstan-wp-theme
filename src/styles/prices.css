@@ -20,12 +20,12 @@
   z-index: 1;
   min-height: 460px;
   margin: 68px 0;
+  /* альтернативный вариант тени */
+  /* filter: drop-shadow(-30px 0 30px #d2e6ff) drop-shadow(30px 0 30px #d2f8ff); */
 
   @media (--max-md) {
     margin: 32px 0;
   }
-
-  /* filter: drop-shadow(-30px 0 30px #d2e6ff) drop-shadow(30px 0 30px #d2f8ff); */
 }
 
 .prices-item-shadow {
@@ -42,22 +42,6 @@
   pointer-events: none;
   margin-top: -250px;
 }
-
-/* .prices-item::before {
-  content: '';
-  background: url('../images/shadow.png') no-repeat 50% 50%;
-  width: 1672px;
-  height: 860px;
-  max-height: calc(100% + 68px + 68px);
-  background-size: cover;
-  position: absolute;
-  z-index: -1;
-  left: 60%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100vw;
-  pointer-events: none;
-} */
 
 .prices-item__slideshow {
   flex-shrink: 0;
