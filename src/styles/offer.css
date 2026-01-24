@@ -157,7 +157,7 @@
   margin-top: 8px;
 }
 
-.offer-item__order-button {
+a.offer-item__order-button {
   border-radius: 20px;
   background: #cd2832;
   height: 42px;
@@ -179,4 +179,8 @@
     height: 36px;
     padding: 0 12px;
   }
+}
+
+a.offer-item__order-button:hover {
+  background: #b8242d;
 }
