@@ -96,9 +96,7 @@
           data-feedback-form-goal=""
           data-feedback-form-action="feedback_form">
           <input type="hidden" name="submitted" value="">
-          <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(
-                                                      'feedback-nonce',
-                                                    ); ?>">
+          <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('feedback-nonce'); ?>">
           <input type="hidden" name="page" value="<?php echo esc_html(get_self_link()); ?>">
           <input type="hidden" name="subject" value="Заказать звонок">
 

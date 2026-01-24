@@ -70,11 +70,15 @@ Template Name: Контакты
             </div>
 
             <div class="feedback__form">
-              <form class="feedback-form" action="https://tsc-stimul.ru/wp-admin/admin-ajax.php" data-feedback-form="" data-feedback-form-goal="" data-feedback-form-action="feedback_form">
+              <form class="feedback-form"
+                action="<?php echo admin_url('admin-ajax.php'); ?>"
+                data-feedback-form
+                data-feedback-form-goal=""
+                data-feedback-form-action="feedback_form">
                 <input type="hidden" name="submitted" value="">
-                <input type="hidden" name="nonce" value="6d3aaee7e7">
-                <input type="hidden" name="page" value="https://tsc-stimul.ru/">
-                <input type="hidden" name="subject" value="Заказать звонок">
+                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('feedback-nonce'); ?>">
+                <input type="hidden" name="page" value="<?php echo esc_html(get_self_link()); ?>">
+                <input type="hidden" name="subject" value="Обратная связь">
 
                 <div class="feedback-form__fields">
                   <div class="feedback-form__errors" data-feedback-form-errors=""></div>
