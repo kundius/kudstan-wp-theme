@@ -254,7 +254,7 @@
   backdrop-filter: blur(12px);
 }
 
-[data-feedback-form-status='success'] .feedback-form-success {
+[data-feedback-form-status='success'] .feedback-form__success {
   display: flex;
 }
 
