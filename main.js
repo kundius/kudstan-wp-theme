@@ -22,6 +22,7 @@ import { initNewsEmbla } from './src/scripts/news'
 import { initMobileMenu } from './src/scripts/mobile-menu'
 import { initSlideshow } from './src/scripts/slideshow'
 import { initCallbackButton } from './src/scripts/callback-button'
+import { initFeedbackForm } from './src/scripts/feedback-form'
 
 new MaskInput('[data-maska]')
 
@@ -32,3 +33,4 @@ initNewsEmbla()
 initMobileMenu()
 initSlideshow()
 initCallbackButton()
+initFeedbackForm()
