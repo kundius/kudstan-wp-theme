@@ -46,7 +46,7 @@ $reviews = new WP_Query([
       </div>
     </div>
     <div class="reviews-footer">
-      <a href="#" class="more-button">
+      <a href="/review/" class="more-button">
         <span class="more-button__text">Смотреть все</span>
         <span class="more-button__icon">
           <span class="icon icon-arrow-right"></span>

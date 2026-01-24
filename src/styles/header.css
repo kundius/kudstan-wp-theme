@@ -265,6 +265,10 @@
     border-color: #51c4ad;
   }
 
+  .header-nav>li.current-menu-item>a {
+    background: rgba(0, 0, 0, 0.102);
+  }
+
   .header-nav>li>ul {
     display: none;
   }

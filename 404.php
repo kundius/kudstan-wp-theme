@@ -8,37 +8,20 @@
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-  <div class="flex flex-col min-h-screen">
+  <div class="page-layout">
     <?php get_template_part('partials/header'); ?>
 
-    <div class="flex-grow page-404-section">
+    <div class="page-layout__body">
       <div class="container">
-        <div class="page-404-headline">
-          <div class="page-404-headline__title">404</div>
-          <div class="page-404-headline__desc">Страница не найдена</div>
-        </div>
-        <div class="page-404-body">
-          <div class="page-404-body__desc">
-            <div class="page-404-body__desc-cell">
-              <strong>Наш телефон:</strong> {crb_theme_phone}
-            </div>
-            <div class="page-404-body__desc-cell">
-              {crb_theme_working_hours_short},  {crb_theme_working_hours_pause}
-            </div>
-          </div>
-          <div class="page-404-body__call">
-            <button type="button" class="control-button" data-modal-open="modal-call">
-              <span>Заказать звонок</span>
-              <span class="icon icon-phone"></span>
-            </button>
-          </div>
+        <h1 class="page-title">404</h1>
+
+        <div class="page-content">
+          Страница не найдена
         </div>
       </div>
     </div>
 
-    <?php get_template_part('partials/modals'); ?>
-
-    <?php wp_footer(); ?>
+    <?php get_template_part('partials/footer'); ?>
   </div>
 </body>
 

@@ -1,13 +1,11 @@
 <?php
-$category = get_queried_object();
 $query_params = [
-  'post_type' => 'post',
+  'post_type' => 'review',
   'orderby' => [
     'is_sticky' => 'DESC',
     'date' => 'DESC',
   ],
   'paged' => get_query_var('paged') ?: 1,
-  'cat' => $category->term_id
 ];
 $articles = new WP_Query($query_params);
 ?>
@@ -35,25 +33,21 @@ $articles = new WP_Query($query_params);
           </li>
           <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
             <span class="breadcrumbs__text" itemprop="item" aria-current="page">
-              <span itemprop="name"><?php single_term_title(); ?></span>
+              <span itemprop="name">Отзывы</span>
             </span>
             <meta itemprop="position" content="2">
           </li>
         </ol>
 
         <h1 class="page-title">
-          <?php single_term_title(); ?>
+          Отзывы
         </h1>
 
-        <div class="page-content">
-          <?php echo term_description() ?>
-        </div>
-
-        <div class="news-grid">
+        <div class="reviews-grid">
           <?php while ($articles->have_posts()): ?>
             <?php $articles->the_post(); ?>
-            <div class="news-grid__item">
-              <?php get_template_part('partials/news-card'); ?>
+            <div class="reviews-grid__item">
+              <?php get_template_part('partials/review-card'); ?>
             </div>
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>

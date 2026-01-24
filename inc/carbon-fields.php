@@ -8,6 +8,30 @@ add_action('after_setup_theme', function () {
   \Carbon_Fields\Carbon_Fields::boot();
 });
 
+add_action('admin_head', function () {
+  echo '<style>
+    [data-type^="carbon-fields/"] {
+      padding: 16px;
+      background: #f0f0f0;
+      border: 2px solid #007cba;
+    }
+
+    [data-type^="carbon-fields/"] .cf-complex__tabs--tabbed-horizontal .cf-complex__tabs-list {
+      padding-left: 0;
+    }
+
+    [data-type^="carbon-fields/"] .cf-field.cf-media-gallery .cf-field__body {
+      background: #ffffff;
+    }
+
+    [data-type^="carbon-fields/"] .cf-field.cf-separator .cf-field__body h3 {
+      font-size: 20px;
+      color: #000;
+      font-weight: 500;
+    }
+  </style>';
+});
+
 add_action('carbon_fields_register_fields', 'register_carbon_fields_blocks');
 function register_carbon_fields_blocks()
 {
@@ -120,24 +144,47 @@ function register_carbon_fields_blocks()
       ]);
     });
 
-  Block::make('partials_prices', 'Блок "Цены"')
+  Block::make('partials_offer', 'Блок "Предложение"')
     ->add_fields([
-      Field::make('separator', 'separator', 'Блок "Цены"'),
-      Field::make('complex', 'list', 'Список')->add_fields([
-        Field::make('media_gallery', 'gallery', 'Фотогалерея'),
-        Field::make('textarea', 'title', 'Заголовок')->set_rows(2),
-        Field::make('textarea', 'content', 'Полное описание')->set_rows(2),
-        Field::make('textarea', 'name', 'Название')->set_rows(2),
-        Field::make('textarea', 'introtext', 'Короткое описание')->set_rows(2),
-        Field::make('text', 'price', 'Цена'),
-        Field::make('text', 'unit', 'Ед. измерения'),
-      ]),
+      Field::make('separator', 'separator', 'Блок "Предложение"'),
+      Field::make('media_gallery', 'gallery', 'Фотогалерея'),
+      Field::make('complex', 'items', 'Элементы')
+        ->set_layout('tabbed-horizontal')->add_fields([
+          Field::make('textarea', 'title', 'Название')->set_rows(2),
+          Field::make('rich_text', 'content', 'Описание'),
+          Field::make('text', 'price', 'Цена')->set_width(50),
+          Field::make('text', 'unit', 'Ед. измерения')->set_width(50),
+          Field::make('text', 'button_text', 'Текст кнопки')->set_width(50),
+          Field::make('text', 'button_link', 'Ссылка кнопки')->set_width(50),
+        ])
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- price ? "(" + price + ")" : "" %>
+            <% } %>
+        '),
     ])
     ->set_category('layout')
     ->set_mode('edit')
     ->set_icon('shortcode')
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
-      get_template_part('partials/prices', null, [
+      get_template_part('partials/offer', null, [
+        'fields' => $fields,
+        'attributes' => $attributes,
+        'inner_blocks' => $inner_blocks,
+      ]);
+    });
+
+  Block::make('partials_slidwshow', 'Блок "Слайдшоу"')
+    ->add_fields([
+      Field::make('separator', 'separator', 'Блок "Слайдшоу"'),
+      Field::make('text', 'aspect_ratio', 'Соотношение сторон'),
+      Field::make('media_gallery', 'gallery', 'Фотогалерея'),
+    ])
+    ->set_category('layout')
+    ->set_mode('edit')
+    ->set_icon('shortcode')
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+      get_template_part('partials/slidwshow', null, [
         'fields' => $fields,
         'attributes' => $attributes,
         'inner_blocks' => $inner_blocks,

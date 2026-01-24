@@ -1,9 +1,9 @@
 <?php
 
-define( 'DISALLOW_FILE_EDIT', true );
+define('DISALLOW_FILE_EDIT', true);
 
 add_filter('excerpt_length', function () {
-    return 15;
+  return 15;
 });
 
 add_image_size('thumbnail-s', 120, 120, true);
@@ -21,24 +21,24 @@ add_theme_support('post-thumbnails');
 add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'script', 'style']);
 
 add_shortcode('partial', function ($atts, $content = null) {
-    ob_start();
-    get_template_part('partials/' . $atts[0]);
-    $output = ob_get_contents();
-    ob_end_clean();
-    return $output;
+  ob_start();
+  get_template_part('partials/' . $atts[0]);
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
 });
 
 function get_icon($name, $size = 24)
 {
-    $output = '<svg viewBox="0 0 24px 24px" width="' . $size . '" height="' . $size . '" class="sprite-icon">';
-    $output .= '<use href="' . get_bloginfo('template_url') . '/dist/assets/sprite.svg?123#' . $name . '"></use>';
-    $output .= '</svg>';
-    return $output;
+  $output = '<svg viewBox="0 0 24px 24px" width="' . $size . '" height="' . $size . '" class="sprite-icon">';
+  $output .= '<use href="' . get_bloginfo('template_url') . '/dist/assets/sprite.svg?123#' . $name . '"></use>';
+  $output .= '</svg>';
+  return $output;
 }
 
 function icon($name, $size = '1em')
 {
-    echo get_icon($name, $size);
+  echo get_icon($name, $size);
 }
 
 function is_new_year()
@@ -52,7 +52,8 @@ function is_new_year()
   return false;
 }
 
-function ssc($text) {
+function ssc($text)
+{
   $search = [
     '{crb_theme_phone}',
     '{crb_theme_telegram}',
@@ -78,7 +79,8 @@ function ssc($text) {
   return str_replace($search, $replace, $text);
 }
 
-function start_output_buffer() {
+function start_output_buffer()
+{
   if (is_admin()) {
     return;
   }
@@ -86,7 +88,8 @@ function start_output_buffer() {
 }
 add_action('template_redirect', 'start_output_buffer');
 
-function apply_full_html_replacements() {
+function apply_full_html_replacements()
+{
   $html = ob_get_clean();
   echo ssc($html);
 }
@@ -101,17 +104,32 @@ add_action('wp_footer', 'apply_full_html_replacements');
 //     [error] => 0
 //     [size] => 317550
 // )
-function create_attachment_from_upload($upload, $post_id = 0) {
-    require_once(ABSPATH . 'wp-admin/includes/media.php');
-    require_once(ABSPATH . 'wp-admin/includes/file.php');
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
+function create_attachment_from_upload($upload, $post_id = 0)
+{
+  require_once(ABSPATH . 'wp-admin/includes/media.php');
+  require_once(ABSPATH . 'wp-admin/includes/file.php');
+  require_once(ABSPATH . 'wp-admin/includes/image.php');
 
-    $attachment_id = media_handle_sideload($upload, $post_id);
+  $attachment_id = media_handle_sideload($upload, $post_id);
 
-    if (is_wp_error($attachment_id)) {
-        @unlink($file_array['tmp_name']);
-        return $attachment_id;
-    }
-
+  if (is_wp_error($attachment_id)) {
+    @unlink($file_array['tmp_name']);
     return $attachment_id;
+  }
+
+  return $attachment_id;
+}
+
+function get_pagination($query)
+{
+  $links = paginate_links([
+    'prev_text' => '<span class="icon icon-arrow-left"></span>',
+    'next_text' => '<span class="icon icon-arrow-right"></span>',
+    'total' => $query->max_num_pages,
+    'current' => max(1, get_query_var('paged')),
+  ]);
+
+  if ($links) {
+    return '<div class="pagination">' . $links . '</div>';
+  }
 }
