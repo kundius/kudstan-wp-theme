@@ -1,5 +1,7 @@
 .preheader {
   color: rgb(255, 255, 255);
+  position: relative;
+  z-index: 100;
 
   @media (--max-lg) {
     display: none;
@@ -118,13 +120,13 @@
   transition: .3s ease;
 }
 
-/* .page-template-home .header-layout::before {
+.page-template-home .header-layout::before {
   border-color: transparent;
 
-  @media (--min-lg) {
+  /* @media (--min-lg) {
     border-radius: 20px;
-  }
-} */
+  } */
+}
 
 [data-sticky-header="active"] .header-layout::before {
   border-radius: 0 0 20px 20px;
