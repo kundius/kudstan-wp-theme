@@ -61,6 +61,16 @@
         <span class="icon icon-menu"></span>
         <span class="icon icon-close"></span>
       </button>
+
+      <?php if ($messengers = carbon_get_theme_option('crb_theme_messengers')): ?>
+        <div class="header-messengers">
+          <?php foreach ($messengers as $messenger): ?>
+            <a href="<?php echo $messenger['link']; ?>" class="header-messengers__item" target="_blank">
+              <?php echo $messenger['icon']; ?>
+            </a>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
