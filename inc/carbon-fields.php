@@ -50,6 +50,10 @@ function register_carbon_fields_blocks()
       Field::make('text', 'crb_theme_phone_time', 'Телефон / Время работы'),
       Field::make('text', 'crb_theme_email', 'E-mail'),
       Field::make('textarea', 'crb_theme_address', 'Адерс')->set_rows(2),
+      Field::make('complex', 'crb_theme_messengers', 'Мессенджеры')->add_fields([
+        Field::make('text', 'link', 'Ссылка'),
+        Field::make('textarea', 'icon', 'Код иконки')->set_rows(2),
+      ]),
     ])
     ->add_tab('Подвал', [
       Field::make('textarea', 'crb_footer_no_oferta', 'Не оферта')->set_rows(2),
