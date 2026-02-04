@@ -18,6 +18,7 @@ Template Name: Главная
 
     <section class="intro">
       <div class="container">
+      <div class="intro-layout__container">
         <div class="intro-layout__logo">
           <img src="<?php bloginfo('template_url'); ?>/assets/logo-white-inline.svg" alt="" />
         </div>
@@ -43,6 +44,7 @@ Template Name: Главная
             </a>
           </div>
         <?php endif; ?>
+      </div>
       </div>
     </section>
 

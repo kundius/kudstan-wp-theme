@@ -21,9 +21,9 @@
   background: #6099e9;
 }
 
-.page-template-home .preheader-layout::before {
+/* .page-template-home .preheader-layout::before {
   display: none;
-}
+} */
 
 .preheader-layout__body {
   max-width: 680px;
@@ -118,13 +118,13 @@
   transition: .3s ease;
 }
 
-.page-template-home .header-layout::before {
+/* .page-template-home .header-layout::before {
   border-color: transparent;
 
   @media (--min-lg) {
     border-radius: 20px;
   }
-}
+} */
 
 [data-sticky-header="active"] .header-layout::before {
   border-radius: 0 0 20px 20px;
@@ -259,6 +259,10 @@
       font-size: 13px;
       border-radius: 12px;
     }
+  }
+
+  .header-nav>li>a>span {
+    color: #cd2832;
   }
 
   .header-nav>li>a:hover {
