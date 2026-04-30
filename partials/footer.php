@@ -34,7 +34,7 @@
             <div class="footer-contacts__item-ico">
               <span class="icon icon-marker"></span>
             </div>
-            <div class="footer-contacts__item-val" itemscope itemtype="https://schema.org/PostalAddress">
+            <div class="footer-contacts__item-val" itemprop="address">
               <?php echo carbon_get_theme_option('crb_theme_address'); ?>
             </div>
           </div>
