@@ -9,7 +9,7 @@
         ]); ?>
       </div>
       <div class="footer-layout__contacts" itemscope itemtype="https://schema.org/LocalBusiness">
-        <meta itemprop="name" content="Название компании">
+        <meta itemprop="name" content="Кудеяров Стан">
         <link itemprop="logo" href="https://kudstan.ru/wp-content/themes/kudstan-wp-theme/assets/logo.svg">
         <link itemprop="url" href="https://kudstan.ru/">
 
