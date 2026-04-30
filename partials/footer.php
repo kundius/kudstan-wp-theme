@@ -8,13 +8,17 @@
           'menu_class' => 'footer-nav',
         ]); ?>
       </div>
-      <div class="footer-layout__contacts">
+      <div class="footer-layout__contacts" itemscope itemtype="https://schema.org/LocalBusiness">
+        <meta itemprop="name" content="Название компании">
+        <link itemprop="logo" href="https://kudstan.ru/wp-content/themes/kudstan-wp-theme/assets/logo.svg">
+        <link itemprop="url" href="https://kudstan.ru/">
+
         <div class="footer-contacts">
           <div class="footer-contacts__item">
             <div class="footer-contacts__item-ico">
               <span class="icon icon-phone"></span>
             </div>
-            <div class="footer-contacts__item-val">
+            <div class="footer-contacts__item-val" itemprop="telephone">
               <?php echo carbon_get_theme_option('crb_theme_phone_number'); ?>
             </div>
           </div>
@@ -22,7 +26,7 @@
             <div class="footer-contacts__item-ico">
               <span class="icon icon-mail"></span>
             </div>
-            <div class="footer-contacts__item-val">
+            <div class="footer-contacts__item-val" itemprop="email">
               <?php echo carbon_get_theme_option('crb_theme_email'); ?>
             </div>
           </div>
@@ -30,7 +34,7 @@
             <div class="footer-contacts__item-ico">
               <span class="icon icon-marker"></span>
             </div>
-            <div class="footer-contacts__item-val">
+            <div class="footer-contacts__item-val" itemscope itemtype="https://schema.org/PostalAddress">
               <?php echo carbon_get_theme_option('crb_theme_address'); ?>
             </div>
           </div>
