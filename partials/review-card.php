@@ -17,10 +17,11 @@
       <?php
         $raw_content = apply_filters('the_content', get_the_content());
         $text_only = wp_strip_all_tags($raw_content);
-        $threshold = 600; // approx characters to decide if we need preview
+        $threshold = 600; // max characters in preview before showing "Показать полностью"
         $has_more = mb_strlen($text_only) > $threshold;
         if ($has_more) {
-          $preview_text = wp_trim_words($text_only, 60, '...');
+          $preview_text = wp_html_excerpt($raw_content, $threshold);
+          $preview_text = trim($preview_text) . '...';
         } else {
           $preview_text = $raw_content;
         }
