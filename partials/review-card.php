@@ -34,12 +34,12 @@
       </div>
 
       <div class="review-card__content-full" aria-hidden="true" tabindex="-1">
-        <button type="button" class="review-card__close" aria-label="Свернуть">Свернуть</button>
         <?php echo $raw_content; ?>
+        <button type="button" class="review-card__toggle review-card__close" aria-label="Свернуть">Свернуть</button>
       </div>
 
       <?php if ($has_more): ?>
-        <button type="button" class="review-card__toggle" aria-expanded="false">Показать полностью</button>
+        <button type="button" class="review-card__toggle review-card__open" aria-expanded="false">Показать полностью</button>
       <?php endif; ?>
     </div>
   </div>

@@ -1,11 +1,11 @@
 export function initReviewToggles() {
   const wrappers = Array.from(document.querySelectorAll('.review-card__content-wrapper'))
   wrappers.forEach(wrapper => {
-    const toggle = wrapper.querySelector('.review-card__toggle')
+    const openEl = wrapper.querySelector('.review-card__open')
     const full = wrapper.querySelector('.review-card__content-full')
     const preview = wrapper.querySelector('.review-card__content-preview')
 
-    if (!toggle || !full || !preview) return
+    if (!open || !full || !preview) return
 
     let portalParent = null
     let repositionHandler = null
@@ -80,7 +80,7 @@ export function initReviewToggles() {
     }
 
     // opener only opens, it does not toggle or change its label
-    toggle.addEventListener('click', () => {
+    openEl.addEventListener('click', () => {
       open()
     })
 
