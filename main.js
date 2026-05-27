@@ -23,6 +23,7 @@ import { initMobileMenu } from './src/scripts/mobile-menu'
 import { initSlideshow } from './src/scripts/slideshow'
 import { initCallbackButton } from './src/scripts/callback-button'
 import { initFeedbackForm } from './src/scripts/feedback-form'
+import { initReviewToggles } from './src/scripts/review-toggle'
 
 new MaskInput('[data-maska]')
 
@@ -34,3 +35,4 @@ initMobileMenu()
 initSlideshow()
 initCallbackButton()
 initFeedbackForm()
+initReviewToggles()
