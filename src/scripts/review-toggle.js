@@ -19,6 +19,8 @@ export function initReviewToggles() {
       full.style.left = `${rect.left}px`
       full.style.top = `${rect.top}px`
       full.style.width = `${rect.width}px`
+      // ensure visible when moved to body
+      full.style.display = 'block'
       full.classList.add('review-card__content-full--portal')
       document.body.appendChild(full)
 
@@ -41,6 +43,8 @@ export function initReviewToggles() {
       full.style.left = ''
       full.style.top = ''
       full.style.width = ''
+      // hide after restoring to keep initial collapsed state
+      full.style.display = 'none'
       portalParent.appendChild(full)
       portalParent = null
       if (repositionHandler) {
@@ -50,10 +54,13 @@ export function initReviewToggles() {
       }
     }
 
+    // attach to static close button inside full content (rendered by PHP)
+    const closeBtn = full.querySelector('.review-card__close')
+    if (closeBtn) closeBtn.addEventListener('click', () => close())
+
     function open() {
       wrapper.classList.add('is-expanded')
-      toggle.setAttribute('aria-expanded', 'true')
-      toggle.textContent = 'Свернуть'
+      // do NOT change the opener text/aria — opener remains an open-only control
       full.setAttribute('aria-hidden', 'false')
       placeInPortal()
       // focus the full content so keyboard users can scroll
@@ -63,8 +70,6 @@ export function initReviewToggles() {
 
     function close() {
       wrapper.classList.remove('is-expanded')
-      toggle.setAttribute('aria-expanded', 'false')
-      toggle.textContent = 'Показать полностью'
       full.setAttribute('aria-hidden', 'true')
       removeFromPortal()
       document.removeEventListener('keydown', onKey)
@@ -74,15 +79,15 @@ export function initReviewToggles() {
       if (e.key === 'Escape') close()
     }
 
+    // opener only opens, it does not toggle or change its label
     toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true'
-      if (expanded) close()
-      else open()
+      open()
     })
 
-    // close when clicking outside the full overlay
+    // close when clicking outside the full overlay (consider portal)
     document.addEventListener('click', (e) => {
       if (!wrapper.classList.contains('is-expanded')) return
+      if (full.contains(e.target)) return
       if (wrapper.contains(e.target)) return
       close()
     })

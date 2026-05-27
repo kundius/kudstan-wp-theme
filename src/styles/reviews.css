@@ -319,3 +319,26 @@
 .review-card__toggle[aria-expanded="true"] {
   background: rgba(0,0,0,0.04);
 }
+
+/* close button inside full content */
+.review-card__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 70;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ensure full content is hidden by default (in case JS moves it)
+   and visible when portal class is applied */
+.review-card__content-full {
+  display: none;
+}
+.review-card__content-full--portal {
+  display: block !important;
+}
