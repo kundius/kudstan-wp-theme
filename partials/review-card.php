@@ -15,8 +15,10 @@
     </div>
     <div class="review-card__content-wrapper">
       <?php
-        $raw_content = apply_filters('the_content', get_the_content());
-        $text_only = wp_strip_all_tags($raw_content);
+        $post = get_post();
+        $raw_post_content = $post ? $post->post_content : '';
+        $raw_content = apply_filters('the_content', $raw_post_content);
+        $text_only = wp_strip_all_tags($raw_post_content);
         $threshold = 600; // max characters in preview before showing "Показать полностью"
         $has_more = mb_strlen($text_only) > $threshold;
         if ($has_more) {
