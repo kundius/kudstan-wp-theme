@@ -250,8 +250,11 @@
 /* Collapsible preview + floating full content */
 .review-card__content-wrapper {
   position: relative;
+  /* space reserved for the toggle button so text doesn't overlap it */
+  --toggle-space: 44px;
   /* keep the parent height fixed to collapsed size */
-  height: calc(1.5em * 5); /* 5 lines */
+  height: calc(1.5em * 5 + var(--toggle-space)); /* 5 lines + button space */
+  padding-bottom: var(--toggle-space);
 }
 
 .review-card__content-preview {
@@ -274,6 +277,13 @@
   border-radius: 12px;
   padding: 16px;
   z-index: 50;
+}
+
+/* When full content is rendered in the document body (portal), use fixed positioning */
+.review-card__content-full--portal {
+  position: fixed !important;
+  z-index: 1100 !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18) !important;
 }
 
 .review-card__content-full-inner {
