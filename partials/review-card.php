@@ -17,10 +17,9 @@
       <?php
         $post = get_post();
         $raw_post_content = $post ? $post->post_content : '';
-        // use raw post content without applying 'the_content' filters
-        $raw_content = $raw_post_content;
+        $raw_content = apply_filters('the_content', $raw_post_content);
         $text_only = wp_strip_all_tags($raw_post_content);
-        $threshold = 600; // max characters in preview before showing "Показать полностью"
+        $threshold = 300;
         $has_more = mb_strlen($text_only) > $threshold;
         if ($has_more) {
           $preview_text = wp_html_excerpt($raw_content, $threshold);
@@ -36,9 +35,7 @@
 
       <div class="review-card__content-full" aria-hidden="true" tabindex="-1">
         <button type="button" class="review-card__close" aria-label="Свернуть">Свернуть</button>
-        <div class="review-card__content-full-inner">
-          <?php echo $raw_content; ?>
-        </div>
+        <?php echo $raw_content; ?>
       </div>
 
       <?php if ($has_more): ?>

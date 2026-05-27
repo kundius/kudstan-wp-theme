@@ -230,7 +230,8 @@
   }
 }
 
-.review-card__content {
+.review-card__content-full,
+.review-card__content-preview {
   font-size: 16px;
   line-height: 1.5;
 
@@ -239,29 +240,14 @@
   }
 }
 
-.review-card__content p {
+.review-card__content-full p,
+.review-card__content-preview p {
   margin: 0;
 }
 
-.review-card__content p+p {
+.review-card__content-full p+p,
+.review-card__content-preview p+p {
   margin-top: 1.5em;
-}
-
-/* Collapsible preview + floating full content */
-.review-card__content-wrapper {
-  position: relative;
-  /* space reserved for the toggle button so text doesn't overlap it */
-  --toggle-space: 44px;
-  /* keep the parent height fixed to collapsed size */
-  height: calc(1.5em * 5 + var(--toggle-space)); /* 5 lines + button space */
-  padding-bottom: var(--toggle-space);
-}
-
-.review-card__content-preview {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .review-card__content-full {
@@ -284,23 +270,6 @@
   position: fixed !important;
   z-index: 1100 !important;
   box-shadow: 0 18px 40px rgba(0,0,0,0.18) !important;
-}
-
-.review-card__content-full-inner {
-  font-size: inherit;
-  line-height: inherit;
-}
-
-.review-card__content-wrapper.is-expanded {
-  height: calc(1.5em * 5); /* keep the wrapper height in flow */
-}
-
-.review-card__content-wrapper.is-expanded .review-card__content-preview {
-  visibility: hidden;
-}
-
-.review-card__content-wrapper.is-expanded .review-card__content-full {
-  display: block;
 }
 
 .review-card__toggle {
@@ -334,11 +303,10 @@
   cursor: pointer;
 }
 
-/* ensure full content is hidden by default (in case JS moves it)
-   and visible when portal class is applied */
 .review-card__content-full {
   display: none;
 }
+
 .review-card__content-full--portal {
   display: block !important;
 }
